@@ -1,0 +1,72 @@
+*******************************************rogue.c********************************************
+*	Nic Durish (#0757227)(ndurish@uoguelph.ca)             	 March 4, 2013                   *
+*	CIS 2500 - Intermediate Programming          			 Assignment 2                    *
+**********************************************************************************************
+
+I. DESCRIPTION & REQUIREMENTS
+II. COMPILATION
+III. EXECUTION & GAME INSTRUCTIONS
+IV. KNOWN LIMITATIONS
+
+******************
+* I. DESCRIPTION *
+******************
+	Rogue is a C program which executes the video-game rogue in the Command Line/Terminal.
+Rogue requires an input file includes when the program is executed. The program utilizes the 
+information provided in the input file to generate the rooms and elements which are to be
+used.
+
+*******************
+* II. COMPILATION *
+*******************
+	To compile:
+1: Navigate to the a2 directory in Terminal (Mac/Linux) or Command Line (Windows)
+2: Type 'make' then hit 'enter'
+3. The screen should output a 'gcc' compile line, if no errors are returned then compilation 
+was successful. The executable file; 'rogue' and can be found in the /bin directory.
+
+*********************************
+* III. EXECUTION & INSTRUCTIONS *
+*********************************
+	To execute the program once it has compiled, navigate to the a1 directory and type;
+'./bin/rogue rooms.txt'
+		-if your input file is not named rooms.txt then replace it with your filename
+		-if your input file is not in the a2 directory than include the file path
+
+	The program will print a brief game title screen, outlining brief controls and a legend. 
+	Press 'enter' to begin. 
+
+	You should now see the game. Your controls are h,j,k,l,n,q which is Left, Up, Down, Right, Next-Room and Quit respectively. You control the yellow hero (@). 
+	
+	ex:						-------------
+							+..@.....!..|
+							|...........|
+							|.........).|
+							|...M.......|
+							|*..........|
+							--------+----
+							
+  By pressing h,j,k or l you may move the hero (@) around the room. The lines (-,|) show the walls of the room. The hero is unable to walk through these walls, except through a door (+). A door brings the player to the next room, as does pressing the 'n' key. There is no way to go back to the previous room. Each other symbol defines a different element, each element can be interacted with differently. The point of the game is to try and escape the dungeon with the most amount of treasures, and kills. Upon either quitting, dying or winning the program will terminate and print a list of game statistics. 
+
+Element Interaction
+Door + - A hero may walk onto a door, but the users next directional input with teleport the 		   				 hero to the next room
+Floor . - A hero may walk over any floor, the floor doesn't have any affect on the hero
+Wall -,| - A hero may not walk over any floor, they provide the room boundaries
+Potion ! - A hero may walk over a potion this will pick it up. Upon picking up a potion the hero's health increases by two
+Weapon ) - A hero may walk over a weapon this will pick it up. Upon picking up a weapon the hero's damage points increases by one
+Treasure * - A hero may walk over a treasure this will pick it up.
+Monsters M - Upon walking into a monster the hero begins combat
+
+Combat
+Combat in rogue is quite simple. The hero's health and the monsters health is displayed out of ten at the bottom of the screen. Each time the hero interacts with the monster, the monster deals 1 damage to the hero and the hero deals damage equal to the amount of weapons he has to the monster. If the hero's health drops to 0 the hero dies, if the monsters health drops to 0 the monster dies. If the monster dies, it disappears, and the hero is now in the monsters position. 
+
+	
+*************************
+* IV. KNOWN LIMITATIONS *
+*************************
+	Due to the time constraints and my lack of programming knowledge. This program was left with some know limitations;
+	
+	-If you have more overlapping, outlying and first row elements than the width of the room. The program will crash.
+  	-When the number of kills, treasures, weapons, or potions hits two digits the alert menu is slightly expanded.
+  -Once you are standing on the door there is no way back into the room, this is a transition step. Even pressing the direction into the room will take you to the next level.
+  -Monsters health is not monster specific. If the hero gets a monster down to 1 health and then goes and hits another monster, the monster with the final hit will die and the monster that received 9 damage will be ten health again.
